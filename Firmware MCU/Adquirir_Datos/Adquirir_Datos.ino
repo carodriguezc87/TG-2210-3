@@ -131,7 +131,7 @@ void loop(){
           
   MQTT_Publish(sensorsTopic,dSens);
   mqttDisconnect();
-  //curr_time = millis() - curr_time;
+  //curr_time = millis() - curr_time; 
   for(int i=0;i<10;i++)
     delay(minuts);
 }
