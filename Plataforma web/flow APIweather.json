@@ -1,0 +1,2632 @@
+[
+    {
+        "id": "4c1a784fb0ecd25b",
+        "type": "tab",
+        "label": "API weather",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2785caa5eb2b86aa",
+        "type": "http request",
+        "z": "4c1a784fb0ecd25b",
+        "name": "GET OWM",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "https://api.openweathermap.org/data/3.0/onecall",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 330,
+        "y": 800,
+        "wires": [
+            [
+                "6e81e940d93b6379",
+                "1666be0891f7e1af",
+                "3db8f4acb93b0622",
+                "139a24b37accedce",
+                "fa32eea28a1f3d70",
+                "252cd7947a7cb112",
+                "2b4b7a542d5c0920",
+                "a415912317d037a3",
+                "9ff230c9115d6f81",
+                "47b4d6850e65fac7",
+                "3ef35649ff4db4e4",
+                "ccd9979157663d96",
+                "8da59aec1370ffab",
+                "211d523df0354e39",
+                "b51baebf2129cfba",
+                "b8626e4377166610",
+                "dd637c1bb9faa298",
+                "a2375acd77df3f11",
+                "6d92499fa9c3e30c",
+                "16588b389df4050c",
+                "d58ec1b5113251e5",
+                "6cbe842ce3bcf99e",
+                "12531ed734353293",
+                "f8575ddf1ec970fc",
+                "0b127ae0941427b1",
+                "5ad0e3f52e6bdcfe",
+                "2bed1ee08e4080fe",
+                "f444489655aa8216",
+                "3d668360e242f1f6",
+                "697ad448fcfe9556",
+                "886b031d458438aa",
+                "c3f170c7a6ef0058",
+                "f3de7fcc9aa05dd0",
+                "56337316142435cf",
+                "5603882489af5a0a",
+                "6f0f33e7b43e9f52",
+                "629e4eb6f227cf03",
+                "1cf1be823ec0c990",
+                "251d23397d353a2d",
+                "41215f372d40c31f"
+            ]
+        ]
+    },
+    {
+        "id": "c50c9a48a4696358",
+        "type": "inject",
+        "z": "4c1a784fb0ecd25b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 740,
+        "wires": [
+            [
+                "5eaebed37093aaed"
+            ]
+        ]
+    },
+    {
+        "id": "2b4b7a542d5c0920",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Temperature",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.temp",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Temp",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 300,
+        "wires": [
+            [
+                "33a5c5d20e88ece1",
+                "9a3805eb6238a1ad",
+                "f7d78e32c784d00f"
+            ]
+        ]
+    },
+    {
+        "id": "33a5c5d20e88ece1",
+        "type": "ui_gauge",
+        "z": "4c1a784fb0ecd25b",
+        "name": "",
+        "group": "4f345e75a0fd6f45",
+        "order": 1,
+        "width": 2,
+        "height": 2,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "45",
+        "colors": [
+            "#d62728",
+            "#d62728",
+            "#d62728"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 970,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "a415912317d037a3",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Pressure",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.pressure",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Pressure",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 380,
+        "wires": [
+            [
+                "e866792ecb3585cb",
+                "f7d78e32c784d00f"
+            ]
+        ]
+    },
+    {
+        "id": "e866792ecb3585cb",
+        "type": "ui_gauge",
+        "z": "4c1a784fb0ecd25b",
+        "name": "",
+        "group": "4f345e75a0fd6f45",
+        "order": 10,
+        "width": 2,
+        "height": 2,
+        "gtype": "gage",
+        "title": "Pressure",
+        "label": "hPa",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "2500",
+        "colors": [
+            "#9467bd",
+            "#9e67bd",
+            "#9467bd"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 960,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "9ff230c9115d6f81",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Humidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.humidity",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Humidity",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 460,
+        "wires": [
+            [
+                "958c170c06df2416",
+                "9a3805eb6238a1ad",
+                "f7d78e32c784d00f"
+            ]
+        ]
+    },
+    {
+        "id": "958c170c06df2416",
+        "type": "ui_gauge",
+        "z": "4c1a784fb0ecd25b",
+        "name": "",
+        "group": "4f345e75a0fd6f45",
+        "order": 2,
+        "width": 2,
+        "height": 2,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#88eceb",
+            "#88eceb",
+            "#88eceb"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 960,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "47b4d6850e65fac7",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "WindSpeed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.wind_speed",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "W_Speed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 540,
+        "wires": [
+            [
+                "9cb4d8425a87afcb",
+                "9a3805eb6238a1ad",
+                "f7d78e32c784d00f"
+            ]
+        ]
+    },
+    {
+        "id": "9cb4d8425a87afcb",
+        "type": "ui_gauge",
+        "z": "4c1a784fb0ecd25b",
+        "name": "",
+        "group": "4f345e75a0fd6f45",
+        "order": 4,
+        "width": 2,
+        "height": 2,
+        "gtype": "gage",
+        "title": "Wind speed",
+        "label": "m/s",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "20",
+        "colors": [
+            "#ff7f0e",
+            "#ff7f0e",
+            "#ff7f0e"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 970,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "361f11af2b48aeeb",
+        "type": "ui_gauge",
+        "z": "4c1a784fb0ecd25b",
+        "name": "",
+        "group": "4f345e75a0fd6f45",
+        "order": 5,
+        "width": 2,
+        "height": 2,
+        "gtype": "gage",
+        "title": "Clouds",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#8f968d",
+            "#8f968d",
+            "#8f968d"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 960,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "3ef35649ff4db4e4",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Clouds",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.clouds",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Clouds",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 620,
+        "wires": [
+            [
+                "361f11af2b48aeeb",
+                "9a3805eb6238a1ad",
+                "f7d78e32c784d00f"
+            ]
+        ]
+    },
+    {
+        "id": "3db8f4acb93b0622",
+        "type": "ui_text",
+        "z": "4c1a784fb0ecd25b",
+        "group": "d13bc51b9c2a6516",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "name": "Description",
+        "label": "",
+        "format": "{{payload.current.weather[0].description}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 970,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "9a3805eb6238a1ad",
+        "type": "ui_chart",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Chart",
+        "group": "06006efaf8572d97",
+        "order": 1,
+        "width": 22,
+        "height": 7,
+        "label": "",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#d62728",
+            "#88eceb",
+            "#ff7f0e",
+            "#8f968d",
+            "#e3e633",
+            "#2ca02c",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1270,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6e81e940d93b6379",
+        "type": "debug",
+        "z": "4c1a784fb0ecd25b",
+        "name": "JSON Object",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "fa32eea28a1f3d70",
+        "type": "ui_text",
+        "z": "4c1a784fb0ecd25b",
+        "group": "d13bc51b9c2a6516",
+        "order": 6,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "Lat:",
+        "format": "{{payload.lat}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 950,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "5eaebed37093aaed",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Settings",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.lat",
+                "pt": "msg",
+                "to": "4.73",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.lon",
+                "pt": "msg",
+                "to": "-74.05",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.appid",
+                "pt": "msg",
+                "to": "b553010f3cd52962a57913ecd64ef2ba",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.units",
+                "pt": "msg",
+                "to": "metric",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.lang",
+                "pt": "msg",
+                "to": "en",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "hour12",
+                "pt": "flow",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "units",
+                "pt": "flow",
+                "to": "payload.units",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "lang",
+                "pt": "flow",
+                "to": "payload.lang",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.exclude",
+                "pt": "msg",
+                "to": "minutely",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 180,
+        "y": 800,
+        "wires": [
+            [
+                "2785caa5eb2b86aa"
+            ]
+        ]
+    },
+    {
+        "id": "1666be0891f7e1af",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Format current data",
+        "func": "var icon = {};\n\nfunction timeConvert(UNIX_timestamp){\n  var dateObject = new Date(UNIX_timestamp * 1000);\n  if (flow.get('hour12')) {  // 12 hour time format\n    return dateObject.toLocaleString('en', { timezone: msg.payload.timezone, hour12: true, hour: 'numeric', minute: '2-digit'}).toLowerCase();\n  } else {  // 24 hour time format\n    return dateObject.toLocaleString('en', { timezone: msg.payload.timezone, hour12: false, hour: 'numeric', minute: '2-digit'});\n  }      \n}\n\nvar degreesToCardinal = function(deg){\n  if (deg>11.25 && deg<=33.75){return \"NNE\";}\n  else if (deg>33.75 && deg<56.25){return \"NE\";}\n  else if (deg>56.25 && deg<78.75){return \"ENE\";}\n  else if (deg>78.75 && deg<101.25){return \"E\";}\n  else if (deg>101.25 && deg<123.75){return \"ESE\";}\n  else if (deg>123.75 && deg<146.25){return \"SE\";}\n  else if (deg>146.25 && deg<168.75){return \"SSE\";}\n  else if (deg>168.75 && deg<191.25){return \"S\";}\n  else if (deg>191.25 && deg<213.75){return \"SSW\";}\n  else if (deg>213.75 && deg<236.25){return \"SW\";}\n  else if (deg>236.25 && deg<258.75){return \"WSW\";}\n  else if (deg>258.75 && deg<281.25){return \"W\";}\n  else if (deg>281.25 && deg<303.75){return \"WNW\";}\n  else if (deg>303.75 && deg<326.25){return \"NW\";}\n  else if (deg>326.25 && deg<348.75){return \"NNW\";}\n  else {return \"N\";}\n}\n\nmsg.payload.current.Wind_cardinal = degreesToCardinal(msg.payload.current.wind_deg);\n//var sunrAdj = msg.payload.current.sunrise + msg.payload.timezone_offset;\n//var sunsAdj = msg.payload.current.sunset + msg.payload.timezone_offset;\n\nmsg.payload.current.sunrise = timeConvert((msg.payload.current.sunrise + msg.payload.timezone_offset));\nmsg.payload.current.sunset = timeConvert((msg.payload.current.sunset + msg.payload.timezone_offset));\n\n//msg.payload.current.sunsetB = timeConvert(1672812312);\n\nvar iconString = 'wi-owm-' + msg.payload.current.weather[0].icon + ' wi-4x';\nicon = {\n    ui_control: {\n        icon: iconString\n    }\n}; \n\nreturn [msg, icon];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 100,
+        "wires": [
+            [
+                "8027fc9e7aa2ee25",
+                "a3c453919a2c449e",
+                "9f1aa201d033d3dd",
+                "ad6b3e465f774668"
+            ],
+            [
+                "b5536869913355b4"
+            ]
+        ]
+    },
+    {
+        "id": "139a24b37accedce",
+        "type": "ui_text",
+        "z": "4c1a784fb0ecd25b",
+        "group": "d13bc51b9c2a6516",
+        "order": 7,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "Lon:",
+        "format": "{{payload.lon}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 950,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "252cd7947a7cb112",
+        "type": "ui_text",
+        "z": "4c1a784fb0ecd25b",
+        "group": "d13bc51b9c2a6516",
+        "order": 8,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "TimeZone:",
+        "format": "{{payload.timezone}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 970,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b5536869913355b4",
+        "type": "ui_button",
+        "z": "4c1a784fb0ecd25b",
+        "name": "IconRefresh",
+        "group": "d13bc51b9c2a6516",
+        "order": 1,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "fa-refresh fa-4x",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "topicType": "str",
+        "x": 1290,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9f1aa201d033d3dd",
+        "type": "ui_text",
+        "z": "4c1a784fb0ecd25b",
+        "group": "d13bc51b9c2a6516",
+        "order": 2,
+        "width": 2,
+        "height": 1,
+        "name": "Wind",
+        "label": "",
+        "format": "<i class=\"wi wi-darksky-wind\"></i>&nbsp;&nbsp;{{msg.payload.current.Wind_cardinal}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1270,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "a3c453919a2c449e",
+        "type": "ui_text",
+        "z": "4c1a784fb0ecd25b",
+        "group": "d13bc51b9c2a6516",
+        "order": 4,
+        "width": 2,
+        "height": 1,
+        "name": "SunriseTime",
+        "label": "",
+        "format": "<i class=\"wi wi-owm-01d\"></i>&nbsp;<i class=\"fa fa-arrow-up\"></i>&nbsp;&nbsp;{{msg.payload.current.sunrise}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 1290,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8027fc9e7aa2ee25",
+        "type": "ui_text",
+        "z": "4c1a784fb0ecd25b",
+        "group": "d13bc51b9c2a6516",
+        "order": 5,
+        "width": 2,
+        "height": 1,
+        "name": "SunsetTime",
+        "label": "",
+        "format": "<i class=\"wi wi-wu-sunny\"></i>&nbsp;<i class=\"fa fa-arrow-down\"></i>&nbsp;&nbsp;{{msg.payload.current.sunset}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 1290,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "40f14f5196e090ba",
+        "type": "ui_gauge",
+        "z": "4c1a784fb0ecd25b",
+        "name": "",
+        "group": "4f345e75a0fd6f45",
+        "order": 7,
+        "width": 2,
+        "height": 2,
+        "gtype": "gage",
+        "title": "UV Radiation ",
+        "label": "UV Index",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "15",
+        "colors": [
+            "#e3e633",
+            "#e3e633",
+            "#e3e633"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 970,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "ccd9979157663d96",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "UVR",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.uvi",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "UVR",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 700,
+        "wires": [
+            [
+                "40f14f5196e090ba",
+                "9a3805eb6238a1ad",
+                "f7d78e32c784d00f"
+            ]
+        ]
+    },
+    {
+        "id": "888eb8f605333dd7",
+        "type": "ui_gauge",
+        "z": "4c1a784fb0ecd25b",
+        "name": "",
+        "group": "4f345e75a0fd6f45",
+        "order": 8,
+        "width": 2,
+        "height": 2,
+        "gtype": "gage",
+        "title": "Dew point",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#2ca02c",
+            "#2ca02c",
+            "#2ca02c"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 960,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "8da59aec1370ffab",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Dew point",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.dew_point",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Dew_point",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 780,
+        "wires": [
+            [
+                "888eb8f605333dd7",
+                "9a3805eb6238a1ad",
+                "f7d78e32c784d00f"
+            ]
+        ]
+    },
+    {
+        "id": "211d523df0354e39",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Format forecast data",
+        "func": "var fcdata = {};\nvar units=flow.get('units');\nif (units===undefined)\n{\n  units=\"imperial\";\n}\n\nfunction formatTemp(high, low){\n  var temp;\n    if (units == \"imperial\") {\n        if (low){\n          temp = parseFloat(high).toFixed() + '/' + parseFloat(low).toFixed()\n        }\n        else {\n          temp = parseFloat(high).toFixed() + '°F'\n        }\n    }\n    else { // metric\n        if (low){\n          temp = parseFloat(high).toFixed() + '/' + parseFloat(low).toFixed()\n        }\n        else {\n          temp = parseFloat(high).toFixed() + '°C'\n        }\n    }\n    return temp;\n}\n\nfunction dayName(unixTime){\n  var dateObject = new Date(unixTime * 1000);\n  return dateObject.toLocaleString(flow.get('lang'), { timezone: msg.payload.timezone, weekday: 'short'});\n  // If the line above is not producing the correct short weekday names for the language set by 'lang',\n  //   you can try upgrading to NodeJS version 13 or higher (when full international support was added for the toLocaleString function),\n  //   or you can use the code below which is an example for French short weekday names.\n/*  \n  switch (dateObject.toLocaleString('en', { timezone: msg.payload.timezone, weekday: 'short'})) {\n    case 'Mon':\n      return 'Lun';\n    case 'Tue':\n      return 'Mar';\n    case 'Wed':\n      return 'Mer';\n    case 'Thu':\n      return 'Jeu';\n    case 'Fri':\n      return 'Ven';\n    case 'Sat':\n      return 'Sam';\n    case 'Sun':\n      return 'Dim';\n  }\n*/\n}\n\nfunction timeConvert(UNIX_timestamp){\n  var dateObject = new Date(UNIX_timestamp * 1000);\n  if (flow.get('hour12')) {  // 12 hour time format\n    return dateObject.toLocaleString('en', { timezone: msg.payload.timezone, hour12: true, hour: 'numeric'}).toLowerCase();\n  } else {  // 24 hour time format\n    return dateObject.toLocaleString('en', { timezone: msg.payload.timezone, hour12: false, hour: 'numeric'}) + ':00';\n  }      \n}\n\n// prepare forecast data for CSS based ui widget\nfcdata.payload = {\n  rowtext: {\n  \tdata01: {\n      cell01: timeConvert((msg.payload.hourly[1].dt + msg.payload.timezone_offset)),\n      cell02: timeConvert((msg.payload.hourly[2].dt + msg.payload.timezone_offset)),\n      cell03: timeConvert((msg.payload.hourly[3].dt + msg.payload.timezone_offset)),\n      cell04: timeConvert((msg.payload.hourly[4].dt + msg.payload.timezone_offset)),\n      cell05: timeConvert((msg.payload.hourly[5].dt + msg.payload.timezone_offset)),\n      cell06: timeConvert((msg.payload.hourly[6].dt + msg.payload.timezone_offset)),\n      cell07: dayName((msg.payload.daily[1].dt + msg.payload.timezone_offset)),\n      cell08: dayName((msg.payload.daily[2].dt + msg.payload.timezone_offset)),\n      cell09: dayName((msg.payload.daily[3].dt + msg.payload.timezone_offset)),\n      cell10: dayName((msg.payload.daily[4].dt + msg.payload.timezone_offset)),\n  \t},\n  \tdata02: {\n       cell01: formatTemp(msg.payload.hourly[1].temp),\n       cell02: formatTemp(msg.payload.hourly[2].temp),\n       cell03: formatTemp(msg.payload.hourly[3].temp),\n       cell04: formatTemp(msg.payload.hourly[4].temp),\n       cell05: formatTemp(msg.payload.hourly[5].temp),\n       cell06: formatTemp(msg.payload.hourly[6].temp),\n       cell07: formatTemp(msg.payload.daily[1].temp.max, msg.payload.daily[1].temp.min),\n       cell08: formatTemp(msg.payload.daily[2].temp.max, msg.payload.daily[2].temp.min),\n       cell09: formatTemp(msg.payload.daily[3].temp.max, msg.payload.daily[3].temp.min),\n       cell10: formatTemp(msg.payload.daily[4].temp.max, msg.payload.daily[4].temp.min),\n  \t}\n  },\n  rowicons: {\n  \tdata01: {\n  \t\tcell01: msg.payload.hourly[1].weather[0].icon,\n  \t\tcell02: msg.payload.hourly[2].weather[0].icon,\n  \t\tcell03: msg.payload.hourly[3].weather[0].icon,\n  \t\tcell04: msg.payload.hourly[4].weather[0].icon,\n  \t\tcell05: msg.payload.hourly[5].weather[0].icon,\n  \t\tcell06: msg.payload.hourly[6].weather[0].icon,\n  \t\tcell07: msg.payload.daily[1].weather[0].icon,\n  \t\tcell08: msg.payload.daily[2].weather[0].icon,\n  \t\tcell09: msg.payload.daily[3].weather[0].icon,\n  \t\tcell10: msg.payload.daily[4].weather[0].icon,\n  \t}\n  }\n}\n\nreturn fcdata;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 620,
+        "wires": [
+            [
+                "f5ab6f3c6796111b"
+            ]
+        ]
+    },
+    {
+        "id": "4d3e94a097c6d555",
+        "type": "mysql",
+        "z": "4c1a784fb0ecd25b",
+        "mydb": "d981625dce59e356",
+        "name": "",
+        "x": 1410,
+        "y": 540,
+        "wires": [
+            [
+                "e6c11e501ae4152c"
+            ]
+        ]
+    },
+    {
+        "id": "ae6f0714da7b7dcb",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "function 1",
+        "func": "var temp = msg.payload.Temp;\nvar pres = msg.payload.Pressure;\nvar hum = msg.payload.Humidity;\nvar w_spe = msg.payload.W_Speed;\nvar w_card = msg.payload.Wind_cardinal;\nvar cloud = msg.payload.Clouds;\nvar uvr = msg.payload.UVR;\nvar dp = msg.payload.Dew_point;\nvar desc = msg.payload.description;\nmsg.topic = \"INSERT INTO Current_weather (Temperature,  Pressure, Humidity, Wind_speed, Clouds, UVR, Dew_point, Description, wind_card)  VALUES (\"+ temp +\",\"+ pres +\",\"+ hum +\",\"+ w_spe +\",\"+ cloud +\",\"+ uvr +\",\"+ dp +\",'\"+ desc +\"','\"+ w_card +\"')\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 620,
+        "wires": [
+            [
+                "4d3e94a097c6d555",
+                "294c3b3569c13168"
+            ]
+        ]
+    },
+    {
+        "id": "e6c11e501ae4152c",
+        "type": "debug",
+        "z": "4c1a784fb0ecd25b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "f7d78e32c784d00f",
+        "type": "join",
+        "z": "4c1a784fb0ecd25b",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "9",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1270,
+        "y": 620,
+        "wires": [
+            [
+                "ae6f0714da7b7dcb"
+            ]
+        ]
+    },
+    {
+        "id": "b51baebf2129cfba",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Description",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.weather[0].description",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "description",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 860,
+        "wires": [
+            [
+                "f7d78e32c784d00f"
+            ]
+        ]
+    },
+    {
+        "id": "176e38f0b9104dac",
+        "type": "link in",
+        "z": "4c1a784fb0ecd25b",
+        "name": "link in 1",
+        "links": [
+            "ccd6f4c6521f7da0"
+        ],
+        "x": 45,
+        "y": 800,
+        "wires": [
+            [
+                "5eaebed37093aaed"
+            ]
+        ]
+    },
+    {
+        "id": "ad6b3e465f774668",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Wind_cardinal",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.current.Wind_cardinal",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Wind_cardinal",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 40,
+        "wires": [
+            [
+                "f7d78e32c784d00f"
+            ]
+        ]
+    },
+    {
+        "id": "b8626e4377166610",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "function 3",
+        "func": "var degreesToCardinal = function (deg) {\n    if (deg > 11.25 && deg <= 33.75) { return \"NNE\"; }\n    else if (deg > 33.75 && deg < 56.25) { return \"NE\"; }\n    else if (deg > 56.25 && deg < 78.75) { return \"ENE\"; }\n    else if (deg > 78.75 && deg < 101.25) { return \"E\"; }\n    else if (deg > 101.25 && deg < 123.75) { return \"ESE\"; }\n    else if (deg > 123.75 && deg < 146.25) { return \"SE\"; }\n    else if (deg > 146.25 && deg < 168.75) { return \"SSE\"; }\n    else if (deg > 168.75 && deg < 191.25) { return \"S\"; }\n    else if (deg > 191.25 && deg < 213.75) { return \"SSW\"; }\n    else if (deg > 213.75 && deg < 236.25) { return \"SW\"; }\n    else if (deg > 236.25 && deg < 258.75) { return \"WSW\"; }\n    else if (deg > 258.75 && deg < 281.25) { return \"W\"; }\n    else if (deg > 281.25 && deg < 303.75) { return \"WNW\"; }\n    else if (deg > 303.75 && deg < 326.25) { return \"NW\"; }\n    else if (deg > 326.25 && deg < 348.75) { return \"NNW\"; }\n    else { return \"N\"; }\n}\n\nmsg.payload.hourly[1].wind_cardinal = degreesToCardinal(msg.payload.hourly[1].wind_deg);\nmsg.payload.hourly[2].wind_cardinal = degreesToCardinal(msg.payload.hourly[2].wind_deg);\nmsg.payload.hourly[3].wind_cardinal = degreesToCardinal(msg.payload.hourly[3].wind_deg);\nmsg.payload.hourly[4].wind_cardinal = degreesToCardinal(msg.payload.hourly[4].wind_deg);\nmsg.payload.hourly[5].wind_cardinal = degreesToCardinal(msg.payload.hourly[5].wind_deg);\nmsg.payload.hourly[10].wind_cardinal = degreesToCardinal(msg.payload.hourly[10].wind_deg);\nmsg.payload.hourly[15].wind_cardinal = degreesToCardinal(msg.payload.hourly[15].wind_deg);\nmsg.payload.hourly[20].wind_cardinal = degreesToCardinal(msg.payload.hourly[20].wind_deg);\nmsg.payload.hourly[24].wind_cardinal = degreesToCardinal(msg.payload.hourly[24].wind_deg);\n\nmsg.payload.daily[1].wind_cardinal = degreesToCardinal(msg.payload.daily[1].wind_deg);\nmsg.payload.daily[2].wind_cardinal = degreesToCardinal(msg.payload.daily[2].wind_deg);\nmsg.payload.daily[3].wind_cardinal = degreesToCardinal(msg.payload.daily[3].wind_deg);\nmsg.payload.daily[4].wind_cardinal = degreesToCardinal(msg.payload.daily[4].wind_deg);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 120,
+        "y": 560,
+        "wires": [
+            [
+                "26d8f94f192e3e02",
+                "83a2bc38f0ac661c",
+                "e52f2f01379f21e1",
+                "b7b86021e51d24c8",
+                "17c2c6d48547bbcf",
+                "8cc24374b3ddc279",
+                "ae422887f0c66dc0",
+                "82434244254410d7",
+                "a37cf25b5a3e76c4",
+                "f3207cf851fa3c9d",
+                "0b99d750350b336d",
+                "49935f03ed3a8cee",
+                "68d2daefb635cf16"
+            ]
+        ]
+    },
+    {
+        "id": "26d8f94f192e3e02",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "1H forecast",
+        "func": "var temp1h = msg.payload.hourly[1].temp;\nvar pres1h = msg.payload.hourly[1].pressure;\nvar hum1h = msg.payload.hourly[1].humidity;\nvar w_spe1h = msg.payload.hourly[1].wind_speed;\nvar w_card1h = msg.payload.hourly[1].wind_cardinal;\nvar cloud1h = msg.payload.hourly[1].clouds;\nvar uvr1h = msg.payload.hourly[1].uvi;\nvar dp1h = msg.payload.hourly[1].dew_point;\nvar desc1h = msg.payload.hourly[1].weather[0].description;\nvar pop1h = (msg.payload.hourly[1].pop)*100;\n//if (typeof msg.payload.hourly[0].rain[\"1h\"] != 'undefined' || msg.payload.hourly[0].rain[\"1h\"] !== null){ \n    //var rain = msg.payload.hourly[0].rain[\"1h\"];\n    //msg.topic = \"INSERT INTO Forecast_1h (Temperature_1h,  Pressure_1h, Humidity_1h, Wind_speed_1h, Clouds_1h, uvi_1h, Dew_point_1h, Description_1h, wind_card_1h, PoP_1h, rain)  VALUES (\" + temp1h + \",\" + pres1h + \",\" + hum1h + \",\" + w_spe1h + \",\" + cloud1h + \",\" + uvr1h + \",\" + dp1h + \",'\" + desc1h + \"','\" + w_card1h + \"','\" + pop1h + \"',\" + rain +\")\";\n//} \n\nif (msg.payload.hourly[1].hasOwnProperty(\"rain['1h']\")) {\n    var rain1h = msg.payload.hourly[0].rain[\"1h\"];\n    msg.topic = \"INSERT INTO Forecast_1h (Temperature_1h,  Pressure_1h, Humidity_1h, Wind_speed_1h, Clouds_1h, uvi_1h, Dew_point_1h, Description_1h, wind_card_1h, PoP_1h, rain_1h)  VALUES (\" + temp1h + \",\" + pres1h + \",\" + hum1h + \",\" + w_spe1h + \",\" + cloud1h + \",\" + uvr1h + \",\" + dp1h + \",'\" + desc1h + \"','\" + w_card1h + \"','\" + pop1h + \"',\" + rain1h + \")\";\n}\nelse {\n    msg.topic = \"INSERT INTO Forecast_1h (Temperature_1h,  Pressure_1h, Humidity_1h, Wind_speed_1h, Clouds_1h, uvi_1h, Dew_point_1h, Description_1h, wind_card_1h, PoP_1h)  VALUES (\" + temp1h + \",\" + pres1h + \",\" + hum1h + \",\" + w_spe1h + \",\" + cloud1h + \",\" + uvr1h + \",\" + dp1h + \",'\" + desc1h + \"','\" + w_card1h + \"', \" + pop1h + \")\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 60,
+        "wires": [
+            [
+                "89813ef29d4d5cdb",
+                "d70a86a3401b21c3"
+            ]
+        ]
+    },
+    {
+        "id": "83a2bc38f0ac661c",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "H2 Forecast",
+        "func": "var temp2h = msg.payload.hourly[2].temp;\nvar pres2h = msg.payload.hourly[2].pressure;\nvar hum2h = msg.payload.hourly[2].humidity;\nvar w_spe2h = msg.payload.hourly[2].wind_speed;\nvar w_card2h = msg.payload.hourly[2].wind_cardinal;\nvar cloud2h = msg.payload.hourly[2].clouds;\nvar uvr2h = msg.payload.hourly[2].uvi;\nvar dp2h = msg.payload.hourly[2].dew_point;\nvar desc2h = msg.payload.hourly[2].weather[0].description;\nvar pop2h = (msg.payload.hourly[2].pop)*100;\nmsg.topic = \"INSERT INTO Forecast_2h  (Temperature_2h,  Pressure_2h, Humidity_2h, Wind_speed_2h, Clouds_2h, uvi_2h, Dew_point_2h, Description_2h, wind_card_2h, PoP_2h)  VALUES (\" + temp2h + \",\" + pres2h + \",\" + hum2h + \",\" + w_spe2h + \",\" + cloud2h + \",\" + uvr2h + \",\" + dp2h + \",'\" + desc2h + \"','\" + w_card2h + \"', \" + pop2h + \")\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 100,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "e52f2f01379f21e1",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "H3 Forecast",
+        "func": "var temp3h = msg.payload.hourly[3].temp;\nvar pres3h = msg.payload.hourly[3].pressure;\nvar hum3h = msg.payload.hourly[3].humidity;\nvar w_spe3h = msg.payload.hourly[3].wind_speed;\nvar w_card3h = msg.payload.hourly[3].wind_cardinal;\nvar cloud3h = msg.payload.hourly[3].clouds;\nvar uvr3h = msg.payload.hourly[3].uvi;\nvar dp3h = msg.payload.hourly[3].dew_point;\nvar desc3h = msg.payload.hourly[3].weather[0].description;\nvar pop3h = (msg.payload.hourly[3].pop)*100;\n\nmsg.topic = \"INSERT INTO Forecast_3h  (Temperature_3h,  Pressure_3h, Humidity_3h, Wind_speed_3h, Clouds_3h, uvi_3h, Dew_point_3h, Description_3h, wind_card_3h, PoP_3h)  VALUES (\" + temp3h + \",\" + pres3h + \",\" + hum3h + \",\" + w_spe3h + \",\" + cloud3h + \",\" + uvr3h + \",\" + dp3h + \",'\" + desc3h + \"','\" + w_card3h + \"', \" + pop3h + \")\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "294c3b3569c13168",
+        "type": "debug",
+        "z": "4c1a784fb0ecd25b",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "89813ef29d4d5cdb",
+        "type": "mysql",
+        "z": "4c1a784fb0ecd25b",
+        "mydb": "d981625dce59e356",
+        "name": "",
+        "x": 550,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "17c2c6d48547bbcf",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "H5 Forecast",
+        "func": "var temp5h = msg.payload.hourly[5].temp;\nvar pres5h = msg.payload.hourly[5].pressure;\nvar hum5h = msg.payload.hourly[5].humidity;\nvar w_spe5h = msg.payload.hourly[5].wind_speed;\nvar w_card5h = msg.payload.hourly[5].wind_cardinal;\nvar cloud5h = msg.payload.hourly[5].clouds;\nvar uvr5h = msg.payload.hourly[5].uvi;\nvar dp5h = msg.payload.hourly[5].dew_point;\nvar desc5h = msg.payload.hourly[5].weather[0].description;\nvar pop5h = (msg.payload.hourly[5].pop)*100;\n\nmsg.topic = \"INSERT INTO Forecast_5h  (Temperature_5h,  Pressure_5h, Humidity_5h, Wind_speed_5h, Clouds_5h, uvi_5h, Dew_point_5h, Description_5h, wind_card_5h, PoP_5h)  VALUES (\" + temp5h + \",\" + pres5h + \",\" + hum5h + \",\" + w_spe5h + \",\" + cloud5h + \",\" + uvr5h + \",\" + dp5h + \",'\" + desc5h + \"','\" + w_card5h + \"', \" + pop5h + \")\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "b7b86021e51d24c8",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "H4 Forecast",
+        "func": "var temp4h = msg.payload.hourly[4].temp;\nvar pres4h = msg.payload.hourly[4].pressure;\nvar hum4h = msg.payload.hourly[4].humidity;\nvar w_spe4h = msg.payload.hourly[4].wind_speed;\nvar w_card4h = msg.payload.hourly[4].wind_cardinal;\nvar cloud4h = msg.payload.hourly[4].clouds;\nvar uvr4h = msg.payload.hourly[4].uvi;\nvar dp4h = msg.payload.hourly[4].dew_point;\nvar desc4h = msg.payload.hourly[4].weather[0].description;\nvar pop4h = (msg.payload.hourly[4].pop)*100;\n\n//msg.topic = \"INSERT INTO Forecast_4h  (Temperature_4h,  Pressure_4h, Humidity_4h, Wind_speed_4h, Clouds_4h, uvi_4h, Dew_point_4h, Description_4h, wind_card_4h, PoP_4h)  VALUES (\" + temp4h + \",\" + pres4h + \",\" + hum4h + \",\" + w_spe4h + \",\" + cloud4h + \",\" + uvr4h + \",\" + dp4h + \",'\" + desc4h + \"','\" + w_card4h + \"', \" + pop4h + \")\";\nif (msg.payload.hourly[4].hasOwnProperty(\"rain['1h']\")) {\n    var rain4h = msg.payload.hourly[4].rain[\"1h\"];\n    msg.topic = \"INSERT INTO Forecast_4h (Temperature_4h,  Pressure_4h, Humidity_4h, Wind_speed_4h, Clouds_4h, uvi_4h, Dew_point_4h, Description_4h, wind_card_4h, PoP_4h, rain_4h)  VALUES (\" + temp4h + \",\" + pres4h + \",\" + hum4h + \",\" + w_spe4h + \",\" + cloud4h + \",\" + uvr4h + \",\" + dp4h + \",'\" + desc4h + \"','\" + w_card4h + \"','\" + pop4h + \"',\" + rain4h + \")\";\n}\nelse {\n    msg.topic = \"INSERT INTO Forecast_4h (Temperature_4h,  Pressure_4h, Humidity_4h, Wind_speed_4h, Clouds_4h, uvi_4h, Dew_point_4h, Description_4h, wind_card_4h, PoP_4h)  VALUES (\" + temp4h + \",\" + pres4h + \",\" + hum4h + \",\" + w_spe4h + \",\" + cloud4h + \",\" + uvr4h + \",\" + dp4h + \",'\" + desc4h + \"','\" + w_card4h + \"', \" + pop4h + \")\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "8cc24374b3ddc279",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "D1 Forecast",
+        "func": "var temp1D = msg.payload.daily[1].temp.day;\nvar tempmax1D = msg.payload.daily[1].temp.max;\nvar tempmin1D = msg.payload.daily[1].temp.min;\nvar pres1D = msg.payload.daily[1].pressure;\nvar hum1D = msg.payload.daily[1].humidity;\nvar w_spe1D = msg.payload.daily[1].wind_speed;\nvar w_card1D = msg.payload.daily[1].wind_cardinal;\nvar cloud1D = msg.payload.daily[1].clouds;\nvar uvr1D = msg.payload.daily[1].uvi;\nvar dp1D = msg.payload.daily[1].dew_point;\nvar desc1D = msg.payload.daily[1].weather[0].description;\nvar pop1D = (msg.payload.daily[1].pop)*100;\n//var rain1D = msg.payload.daily[1].rain;\n//msg.topic = \"INSERT INTO Forecast_1D  (Temperature_1D, Temp_max_1D, Temp_min_1D, Pressure_1D, Humidity_1D, Wind_speed_1D, Clouds_1D, uvi_1D, Dew_point_1D, Description_1D, wind_card_1D, PoP_1D, Rain_1D)  VALUES (\" + temp1D + \",\" + tempmax1D + \",\" + tempmin1D + \",\"+ pres1D + \",\" + hum1D + \",\" + w_spe1D + \",\" + cloud1D + \",\" + uvr1D + \",\" + dp1D + \",'\" + desc1D + \"','\" + w_card1D + \"', \" + pop1D + \",\"+ rain1D + \")\";\nif (msg.payload.daily[1].hasOwnProperty(\"rain\")) {\n    var rain1D = msg.payload.daily[1].rain;\n    msg.topic = \"INSERT INTO Forecast_1D  (Temperature_1D, Temp_max_1D, Temp_min_1D, Pressure_1D, Humidity_1D, Wind_speed_1D, Clouds_1D, uvi_1D, Dew_point_1D, Description_1D, wind_card_1D, PoP_1D, Rain_1D)  VALUES (\" + temp1D + \",\" + tempmax1D + \",\" + tempmin1D + \",\" + pres1D + \",\" + hum1D + \",\" + w_spe1D + \",\" + cloud1D + \",\" + uvr1D + \",\" + dp1D + \",'\" + desc1D + \"','\" + w_card1D + \"', \" + pop1D + \",\" + rain1D + \")\";\n}\nelse {\n    msg.topic = \"INSERT INTO Forecast_1D  (Temperature_1D, Temp_max_1D, Temp_min_1D, Pressure_1D, Humidity_1D, Wind_speed_1D, Clouds_1D, uvi_1D, Dew_point_1D, Description_1D, wind_card_1D, PoP_1D)  VALUES (\" + temp1D + \",\" + tempmax1D + \",\" + tempmin1D + \",\" + pres1D + \",\" + hum1D + \",\" + w_spe1D + \",\" + cloud1D + \",\" + uvr1D + \",\" + dp1D + \",'\" + desc1D + \"','\" + w_card1D + \"', \" + pop1D + \")\";\n}\nreturn msg;\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 440,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "ae422887f0c66dc0",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "D2 Forecast",
+        "func": "var temp2D = msg.payload.daily[2].temp.day;\nvar tempmax2D = msg.payload.daily[2].temp.max;\nvar tempmin2D = msg.payload.daily[2].temp.min;\nvar pres2D = msg.payload.daily[2].pressure;\nvar hum2D = msg.payload.daily[2].humidity;\nvar w_spe2D = msg.payload.daily[2].wind_speed;\nvar w_card2D = msg.payload.daily[2].wind_cardinal;\nvar cloud2D = msg.payload.daily[2].clouds;\nvar uvr2D = msg.payload.daily[2].uvi;\nvar dp2D = msg.payload.daily[2].dew_point;\nvar desc2D = msg.payload.daily[2].weather[0].description;\nvar pop2D = (msg.payload.daily[2].pop)*100;\nvar rain2D = msg.payload.daily[2].rain;\nmsg.topic = \"INSERT INTO Forecast_2D  (Temperature_2D, Temp_max_2D, Temp_min_2D, Pressure_2D, Humidity_2D, Wind_speed_2D, Clouds_2D, uvi_2D, Dew_point_2D, Description_2D, wind_card_2D, PoP_2D, Rain_2D)  VALUES (\" + temp2D + \",\" + tempmax2D + \",\" + tempmin2D + \",\" + pres2D + \",\" + hum2D + \",\" + w_spe2D + \",\" + cloud2D + \",\" + uvr2D + \",\" + dp2D + \",'\" + desc2D + \"','\" + w_card2D + \"', \" + pop2D + \",\" + rain2D + \")\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 480,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "a37cf25b5a3e76c4",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "D4 Forecast",
+        "func": "var temp4D = msg.payload.daily[4].temp.day;\nvar tempmax4D = msg.payload.daily[4].temp.max;\nvar tempmin4D = msg.payload.daily[4].temp.min;\nvar pres4D = msg.payload.daily[4].pressure;\nvar hum4D = msg.payload.daily[4].humidity;\nvar w_spe4D = msg.payload.daily[4].wind_speed;\nvar w_card4D = msg.payload.daily[4].wind_cardinal;\nvar cloud4D = msg.payload.daily[4].clouds;\nvar uvr4D = msg.payload.daily[4].uvi;\nvar dp4D = msg.payload.daily[4].dew_point;\nvar desc4D = msg.payload.daily[4].weather[0].description;\nvar pop4D = (msg.payload.daily[4].pop)*100;\nvar rain4D = msg.payload.daily[4].rain;\nmsg.topic = \"INSERT INTO Forecast_4D  (Temperature_4D, Temp_max_4D, Temp_min_4D, Pressure_4D, Humidity_4D, Wind_speed_4D, Clouds_4D, uvi_4D, Dew_point_4D, Description_4D, wind_card_4D, PoP_4D, Rain_4D)  VALUES (\" + temp4D + \",\" + tempmax4D + \",\" + tempmin4D + \",\" + pres4D + \",\" + hum4D + \",\" + w_spe4D + \",\" + cloud4D + \",\" + uvr4D + \",\" + dp4D + \",'\" + desc4D + \"','\" + w_card4D + \"', \" + pop4D + \",\" + rain4D + \")\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 560,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "82434244254410d7",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "D3 Forecast",
+        "func": "var temp3D = msg.payload.daily[3].temp.day;\nvar tempmax3D = msg.payload.daily[3].temp.max;\nvar tempmin3D = msg.payload.daily[3].temp.min;\nvar pres3D = msg.payload.daily[3].pressure;\nvar hum3D = msg.payload.daily[3].humidity;\nvar w_spe3D = msg.payload.daily[3].wind_speed;\nvar w_card3D = msg.payload.daily[3].wind_cardinal;\nvar cloud3D = msg.payload.daily[3].clouds;\nvar uvr3D = msg.payload.daily[3].uvi;\nvar dp3D = msg.payload.daily[3].dew_point;\nvar desc3D = msg.payload.daily[3].weather[0].description;\nvar pop3D = (msg.payload.daily[3].pop)*100;\nvar rain3D = msg.payload.daily[3].rain;\nmsg.topic = \"INSERT INTO Forecast_3D  (Temperature_3D, Temp_max_3D, Temp_min_3D, Pressure_3D, Humidity_3D, Wind_speed_3D, Clouds_3D, uvi_3D, Dew_point_3D, Description_3D, wind_card_3D, PoP_3D, Rain_3D)  VALUES (\" + temp3D + \",\" + tempmax3D + \",\" + tempmin3D + \",\" + pres3D + \",\" + hum3D + \",\" + w_spe3D + \",\" + cloud3D + \",\" + uvr3D + \",\" + dp3D + \",'\" + desc3D + \"','\" + w_card3D + \"', \" + pop3D + \",\" + rain3D + \")\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 520,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "dd637c1bb9faa298",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Temperature ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[4].temp",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Temp",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 1200,
+        "wires": [
+            [
+                "04d0dcd1bfe8646c"
+            ]
+        ]
+    },
+    {
+        "id": "a2375acd77df3f11",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Humidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[4].humidity",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Humidity",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 1240,
+        "wires": [
+            [
+                "04d0dcd1bfe8646c"
+            ]
+        ]
+    },
+    {
+        "id": "6d92499fa9c3e30c",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "WindSpeed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[4].wind_speed",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "W_Speed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 1280,
+        "wires": [
+            [
+                "04d0dcd1bfe8646c"
+            ]
+        ]
+    },
+    {
+        "id": "16588b389df4050c",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Clouds",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[4].clouds",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Clouds",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 1320,
+        "wires": [
+            [
+                "04d0dcd1bfe8646c"
+            ]
+        ]
+    },
+    {
+        "id": "d58ec1b5113251e5",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "UVR",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[4].uvi",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "UVR",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1360,
+        "wires": [
+            [
+                "04d0dcd1bfe8646c"
+            ]
+        ]
+    },
+    {
+        "id": "23c694cdccbe54a8",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "PoP",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[4].pop",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "PoP",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1400,
+        "wires": [
+            [
+                "04d0dcd1bfe8646c"
+            ]
+        ]
+    },
+    {
+        "id": "6cbe842ce3bcf99e",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Temperature",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.daily[1].temp.day",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Temp",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 1480,
+        "wires": [
+            [
+                "a4543a7cf94dcdaf"
+            ]
+        ]
+    },
+    {
+        "id": "12531ed734353293",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Humidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.daily[1].humidity",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Humidity",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 1520,
+        "wires": [
+            [
+                "a4543a7cf94dcdaf"
+            ]
+        ]
+    },
+    {
+        "id": "f8575ddf1ec970fc",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "WindSpeed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.daily[1].wind_speed",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "W_Speed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 1560,
+        "wires": [
+            [
+                "a4543a7cf94dcdaf"
+            ]
+        ]
+    },
+    {
+        "id": "0b127ae0941427b1",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Rain",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.daily[1].rain",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Rain",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1600,
+        "wires": [
+            [
+                "a4543a7cf94dcdaf"
+            ]
+        ]
+    },
+    {
+        "id": "5ad0e3f52e6bdcfe",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "UVR",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.daily[1].uvi",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "UVR",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1640,
+        "wires": [
+            [
+                "a4543a7cf94dcdaf"
+            ]
+        ]
+    },
+    {
+        "id": "de1cbdf035355ab9",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "PoP",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.daily[1].pop",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "PoP",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1680,
+        "wires": [
+            [
+                "a4543a7cf94dcdaf"
+            ]
+        ]
+    },
+    {
+        "id": "04d0dcd1bfe8646c",
+        "type": "ui_chart",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Chart",
+        "group": "a6aedceb20bf73eb",
+        "order": 1,
+        "width": 22,
+        "height": 6,
+        "label": "",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#d62728",
+            "#88eceb",
+            "#ff7f0e",
+            "#8f968d",
+            "#e3e633",
+            "#1f77b4",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1270,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4543a7cf94dcdaf",
+        "type": "ui_chart",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Chart",
+        "group": "caca0903b111ebf2",
+        "order": 1,
+        "width": 22,
+        "height": 6,
+        "label": "",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#d62728",
+            "#88eceb",
+            "#ff7f0e",
+            "#4b1eb3",
+            "#e3e633",
+            "#1f77b4",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1270,
+        "y": 1600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2bed1ee08e4080fe",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "x100",
+        "func": "msg.payload.daily[1].pop = (msg.payload.daily[1].pop)*100;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 1720,
+        "wires": [
+            [
+                "de1cbdf035355ab9"
+            ]
+        ]
+    },
+    {
+        "id": "f444489655aa8216",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "x100",
+        "func": "\nmsg.payload.hourly[4].pop = (msg.payload.hourly[4].pop)*100;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 1440,
+        "wires": [
+            [
+                "23c694cdccbe54a8"
+            ]
+        ]
+    },
+    {
+        "id": "f5ab6f3c6796111b",
+        "type": "ui_template",
+        "z": "4c1a784fb0ecd25b",
+        "group": "0bd1b32affc2a654",
+        "name": "Forecast2",
+        "order": 1,
+        "width": 22,
+        "height": 2,
+        "format": "<div style=\"height: 100%; justify-content: center; align-items: center;\">\n <div layout=\"rowicons\" layout-align=\"space-around start\" ng-repeat=\"data in msg.payload.rowicons\" style=\"font-size:150%;padding-top: 5px;padding-bottom: 5px\">\n  <span flex style=\"color: white;text-align: center\"><i class=\"wi wi-owm-{{data.cell01}}\"></i></span>\n  <span flex style=\"color: white;text-align: center\"><i class=\"wi wi-owm-{{data.cell02}}\"></i></span>\n  <span flex style=\"color: white;text-align: center\"><i class=\"wi wi-owm-{{data.cell03}}\"></i></span>\n  <span flex style=\"color: white;text-align: center\"><i class=\"wi wi-owm-{{data.cell04}}\"></i></span>\n  <span flex style=\"color: white;text-align: center\"><i class=\"wi wi-owm-{{data.cell05}}\"></i></span>\n  <span flex style=\"color: white;text-align: center\"><i class=\"wi wi-owm-{{data.cell06}}\"></i></span>\n  <span flex style=\"color: #097479;text-align: center\"><i class=\"wi wi-owm-{{data.cell07}}\"></i></span>\n  <span flex style=\"color: #097479;text-align: center\"><i class=\"wi wi-owm-{{data.cell08}}\"></i></span>\n  <span flex style=\"color: #097479;text-align: center\"><i class=\"wi wi-owm-{{data.cell09}}\"></i></span>\n  <span flex style=\"color: #097479;text-align: center\"><i class=\"wi wi-owm-{{data.cell10}}\"></i></span>\n </div>\n <div layout=\"rowtext\" layout-align=\"space-around start\" ng-repeat=\"data in msg.payload.rowtext\" style=\"line-height: 150%\">\n  <span flex style=\"color: white;text-align: center;\">{{data.cell01}}</span>\n  <span flex style=\"color: white;text-align: center\">{{data.cell02}}</span>\n  <span flex style=\"color: white;text-align: center\">{{data.cell03}}</span>\n  <span flex style=\"color: white;text-align: center\">{{data.cell04}}</span>\n  <span flex style=\"color: white;text-align: center\">{{data.cell05}}</span>\n  <span flex style=\"color: white;text-align: center\">{{data.cell06}}</span>\n  <span flex style=\"color: #097479;text-align: center\">{{data.cell07}}</span>\n  <span flex style=\"color: #097479;text-align: center\">{{data.cell08}}</span>\n  <span flex style=\"color: #097479;text-align: center\">{{data.cell09}}</span>\n  <span flex style=\"color: #097479;text-align: center\">{{data.cell10}}</span>\n </div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 460,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3d668360e242f1f6",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Temperature ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[1].temp",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Temp",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 920,
+        "wires": [
+            [
+                "c49c81b658ae1757"
+            ]
+        ]
+    },
+    {
+        "id": "697ad448fcfe9556",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Humidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[1].humidity",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Humidity",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 960,
+        "wires": [
+            [
+                "c49c81b658ae1757"
+            ]
+        ]
+    },
+    {
+        "id": "886b031d458438aa",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "WindSpeed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[1].wind_speed",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "W_Speed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 1000,
+        "wires": [
+            [
+                "c49c81b658ae1757"
+            ]
+        ]
+    },
+    {
+        "id": "c3f170c7a6ef0058",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Clouds",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[1].clouds",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Clouds",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 1040,
+        "wires": [
+            [
+                "c49c81b658ae1757"
+            ]
+        ]
+    },
+    {
+        "id": "f3de7fcc9aa05dd0",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "UVR",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[1].uvi",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "UVR",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1080,
+        "wires": [
+            [
+                "c49c81b658ae1757"
+            ]
+        ]
+    },
+    {
+        "id": "15aa5b604ad4dc32",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "PoP",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[1].pop",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "PoP",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1120,
+        "wires": [
+            [
+                "c49c81b658ae1757"
+            ]
+        ]
+    },
+    {
+        "id": "c49c81b658ae1757",
+        "type": "ui_chart",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Chart",
+        "group": "7579cb3b13bdc7b2",
+        "order": 1,
+        "width": 22,
+        "height": 6,
+        "label": "",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#d62728",
+            "#88eceb",
+            "#ff7f0e",
+            "#8f968d",
+            "#e3e633",
+            "#1f77b4",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1270,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "56337316142435cf",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "x100",
+        "func": "\nmsg.payload.hourly[1].pop = (msg.payload.hourly[1].pop)*100;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 1160,
+        "wires": [
+            [
+                "15aa5b604ad4dc32"
+            ]
+        ]
+    },
+    {
+        "id": "d70a86a3401b21c3",
+        "type": "debug",
+        "z": "4c1a784fb0ecd25b",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "49935f03ed3a8cee",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "H10 Forecast",
+        "func": "var temp10h = msg.payload.hourly[10].temp;\nvar pres10h = msg.payload.hourly[10].pressure;\nvar hum10h = msg.payload.hourly[10].humidity;\nvar w_spe10h = msg.payload.hourly[10].wind_speed;\nvar w_card10h = msg.payload.hourly[10].wind_cardinal;\nvar cloud10h = msg.payload.hourly[10].clouds;\nvar uvr10h = msg.payload.hourly[10].uvi;\nvar dp10h = msg.payload.hourly[10].dew_point;\nvar desc10h = msg.payload.hourly[10].weather[0].description;\nvar pop10h = (msg.payload.hourly[10].pop)*100;\n\nmsg.topic = \"INSERT INTO Forecast_10h  (Temperature_10h,  Pressure_10h, Humidity_10h, Wind_speed_10h, Clouds_10h, uvi_10h, Dew_point_10h, Description_10h, wind_card_10h, PoP_10h)  VALUES (\" + temp10h + \",\" + pres10h + \",\" + hum10h + \",\" + w_spe10h + \",\" + cloud10h + \",\" + uvr10h + \",\" + dp10h + \",'\" + desc10h + \"','\" + w_card10h + \"', \" + pop10h + \")\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 260,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "0b99d750350b336d",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "H15 Forecast",
+        "func": "var temp15h = msg.payload.hourly[15].temp;\nvar pres15h = msg.payload.hourly[15].pressure;\nvar hum15h = msg.payload.hourly[15].humidity;\nvar w_speed15h = msg.payload.hourly[15].wind_speed;\nvar w_card15h = msg.payload.hourly[15].wind_cardinal;\nvar cloud15h = msg.payload.hourly[15].clouds;\nvar uvr15h = msg.payload.hourly[15].uvi;\nvar dp15h = msg.payload.hourly[15].dew_point;\nvar desc15h = msg.payload.hourly[15].weather[0].description;\nvar pop15h = (msg.payload.hourly[15].pop)*100;\n\nmsg.topic = \"INSERT INTO Forecast_15h  (Temperature_15h,  Pressure_15h, Humidity_15h, Wind_speed_15h, Clouds_15h, uvi_15h, Dew_point_15h, Description_15h, wind_card_15h, PoP_15h)  VALUES (\" + temp15h + \",\" + pres15h + \",\" + hum15h + \",\" + w_speed15h + \",\" + cloud15h + \",\" + uvr15h + \",\" + dp15h + \",'\" + desc15h + \"','\" + w_card15h + \"', \" + pop15h + \")\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "f3207cf851fa3c9d",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "H20 Forecast",
+        "func": "var temp20h = msg.payload.hourly[20].temp;\nvar pres20h = msg.payload.hourly[20].pressure;\nvar hum20h = msg.payload.hourly[20].humidity;\nvar w_speed20h = msg.payload.hourly[20].wind_speed;\nvar w_card20h = msg.payload.hourly[20].wind_cardinal;\nvar cloud20h = msg.payload.hourly[20].clouds;\nvar uvr20h = msg.payload.hourly[20].uvi;\nvar dp20h = msg.payload.hourly[20].dew_point;\nvar desc20h = msg.payload.hourly[20].weather[0].description;\nvar pop20h = (msg.payload.hourly[20].pop)*100;\n\nmsg.topic = \"INSERT INTO Forecast_20h  (Temperature_20h,  Pressure_20h, Humidity_20h, Wind_speed_20h, Clouds_20h, uvi_20h, Dew_point_20h, Description_20h, wind_card_20h, PoP_20h)  VALUES (\" + temp20h + \",\" + pres20h + \",\" + hum20h + \",\" + w_speed20h + \",\" + cloud20h + \",\" + uvr20h + \",\" + dp20h + \",'\" + desc20h + \"','\" + w_card20h + \"', \" + pop20h + \")\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 340,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "68d2daefb635cf16",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "H24 Forecast",
+        "func": "var temp24h = msg.payload.hourly[24].temp;\nvar pres24h = msg.payload.hourly[24].pressure;\nvar hum24h = msg.payload.hourly[24].humidity;\nvar w_spe24h = msg.payload.hourly[24].wind_speed;\nvar w_card24h = msg.payload.hourly[24].wind_cardinal;\nvar cloud24h = msg.payload.hourly[24].clouds;\nvar uvr24h = msg.payload.hourly[24].uvi;\nvar dp24h = msg.payload.hourly[24].dew_point;\nvar desc24h = msg.payload.hourly[24].weather[0].description;\nvar pop24h = (msg.payload.hourly[24].pop)*100;\n\nmsg.topic = \"INSERT INTO Forecast_24h  (Temperature_24h,  Pressure_24h, Humidity_24h, Wind_speed_24h, Clouds_24h, uvi_24h, Dew_point_24h, Description_24h, Wind_card_24h, PoP_24h)  VALUES (\" + temp24h + \",\" + pres24h + \",\" + hum24h + \",\" + w_spe24h + \",\" + cloud24h + \",\" + uvr24h + \",\" + dp24h + \",'\" + desc24h + \"','\" + w_card24h + \"', \" + pop24h + \")\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 380,
+        "wires": [
+            [
+                "89813ef29d4d5cdb"
+            ]
+        ]
+    },
+    {
+        "id": "5603882489af5a0a",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Temperature ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[10].temp",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Temp",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 1780,
+        "wires": [
+            [
+                "4938ba603da7c0b6"
+            ]
+        ]
+    },
+    {
+        "id": "6f0f33e7b43e9f52",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Humidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[10].humidity",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Humidity",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 1820,
+        "wires": [
+            [
+                "4938ba603da7c0b6"
+            ]
+        ]
+    },
+    {
+        "id": "629e4eb6f227cf03",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "WindSpeed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[10].wind_speed",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "W_Speed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 1860,
+        "wires": [
+            [
+                "4938ba603da7c0b6"
+            ]
+        ]
+    },
+    {
+        "id": "1cf1be823ec0c990",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Clouds",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[10].clouds",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Clouds",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 1900,
+        "wires": [
+            [
+                "4938ba603da7c0b6"
+            ]
+        ]
+    },
+    {
+        "id": "251d23397d353a2d",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "UVR",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[10].uvi",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "UVR",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1940,
+        "wires": [
+            [
+                "4938ba603da7c0b6"
+            ]
+        ]
+    },
+    {
+        "id": "8e79d636ee8f9f90",
+        "type": "change",
+        "z": "4c1a784fb0ecd25b",
+        "name": "PoP",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.hourly[10].pop",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "PoP",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 1980,
+        "wires": [
+            [
+                "4938ba603da7c0b6"
+            ]
+        ]
+    },
+    {
+        "id": "4938ba603da7c0b6",
+        "type": "ui_chart",
+        "z": "4c1a784fb0ecd25b",
+        "name": "Chart",
+        "group": "380f01c27576e676",
+        "order": 1,
+        "width": 22,
+        "height": 5,
+        "label": "",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#d62728",
+            "#88eceb",
+            "#ff7f0e",
+            "#8f968d",
+            "#e3e633",
+            "#1f77b4",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1270,
+        "y": 1900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "41215f372d40c31f",
+        "type": "function",
+        "z": "4c1a784fb0ecd25b",
+        "name": "x100",
+        "func": "\nmsg.payload.hourly[10].pop = (msg.payload.hourly[10].pop)*100;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 2020,
+        "wires": [
+            [
+                "8e79d636ee8f9f90"
+            ]
+        ]
+    },
+    {
+        "id": "167ba06480ca0ce5",
+        "type": "ui_spacer",
+        "z": "4c1a784fb0ecd25b",
+        "name": "spacer",
+        "group": "d13bc51b9c2a6516",
+        "order": 9,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "3be43d55dd791780",
+        "type": "ui_spacer",
+        "z": "4c1a784fb0ecd25b",
+        "name": "spacer",
+        "group": "4f345e75a0fd6f45",
+        "order": 3,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "c7f9bda1de5e0c74",
+        "type": "ui_spacer",
+        "z": "4c1a784fb0ecd25b",
+        "name": "spacer",
+        "group": "4f345e75a0fd6f45",
+        "order": 6,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "20378d90b1149adc",
+        "type": "ui_spacer",
+        "z": "4c1a784fb0ecd25b",
+        "name": "spacer",
+        "group": "4f345e75a0fd6f45",
+        "order": 9,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f7a0654b5f480231",
+        "type": "ui_spacer",
+        "z": "4c1a784fb0ecd25b",
+        "name": "spacer",
+        "group": "4f345e75a0fd6f45",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "27d90bf730c1105c",
+        "type": "ui_spacer",
+        "z": "4c1a784fb0ecd25b",
+        "name": "spacer",
+        "group": "4f345e75a0fd6f45",
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c40b31ac2fa09f09",
+        "type": "ui_spacer",
+        "z": "4c1a784fb0ecd25b",
+        "name": "spacer",
+        "group": "4f345e75a0fd6f45",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4f345e75a0fd6f45",
+        "type": "ui_group",
+        "name": "Last values",
+        "tab": "fb04c3a6f2aaf02c",
+        "order": 4,
+        "disp": true,
+        "width": 4,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d13bc51b9c2a6516",
+        "type": "ui_group",
+        "name": "Main",
+        "tab": "fb04c3a6f2aaf02c",
+        "order": 1,
+        "disp": false,
+        "width": 26,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "06006efaf8572d97",
+        "type": "ui_group",
+        "name": "Historical data",
+        "tab": "fb04c3a6f2aaf02c",
+        "order": 2,
+        "disp": true,
+        "width": 22,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d981625dce59e356",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "localhost",
+        "port": "3306",
+        "db": "dataLogger",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "a6aedceb20bf73eb",
+        "type": "ui_group",
+        "name": "4 Hours Forecast",
+        "tab": "fb04c3a6f2aaf02c",
+        "order": 6,
+        "disp": true,
+        "width": 22,
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "caca0903b111ebf2",
+        "type": "ui_group",
+        "name": "1 Day Forecast",
+        "tab": "fb04c3a6f2aaf02c",
+        "order": 8,
+        "disp": true,
+        "width": 22,
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "0bd1b32affc2a654",
+        "type": "ui_group",
+        "name": "Forecast",
+        "tab": "fb04c3a6f2aaf02c",
+        "order": 3,
+        "disp": true,
+        "width": 22,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7579cb3b13bdc7b2",
+        "type": "ui_group",
+        "name": "1 Hour Forecast",
+        "tab": "fb04c3a6f2aaf02c",
+        "order": 5,
+        "disp": true,
+        "width": "22",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "380f01c27576e676",
+        "type": "ui_group",
+        "name": "10 Hours Forecast",
+        "tab": "fb04c3a6f2aaf02c",
+        "order": 7,
+        "disp": true,
+        "width": 22,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fb04c3a6f2aaf02c",
+        "type": "ui_tab",
+        "name": "Weather data",
+        "icon": "cloud_circle",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
